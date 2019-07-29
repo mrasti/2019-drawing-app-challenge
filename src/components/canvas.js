@@ -42,6 +42,21 @@ export default function Canvas({activeTool, penOptions}) {
 		if (isDrawing) {
 			ctx.lineTo(getX(event), getY(event));
 			ctx.lineWidth = penOptions.strokeWidth;
+			var spaceLen=penOptions.strokeWidth;
+			switch(penOptions.lineType){
+				case 'dot':
+					ctx.lineCap = "round";
+					spaceLen = penOptions.strokeWidth*1.5;
+					break;
+				case 'dash':
+					ctx.lineCap = "square";
+					spaceLen = penOptions.strokeWidth*3;
+					break;
+				case 'solid':
+					spaceLen = 0;
+					break;
+			}
+			ctx.setLineDash([penOptions.strokeWidth/5, spaceLen])
 			ctx.lineJoin = "round";
 			ctx.stroke();
 		}

@@ -4,6 +4,7 @@ export default function Canvas({activeTool, penOptions}) {
 	const canvasRef = useRef(null);
 
 	const [isDrawing, setIsDrawing] = useState(false);
+	const [isStamping, setIsStamping] = useState(false);
 	const [ctx, setCtx] = useState(null);
 
 	useEffect(() => {
@@ -35,6 +36,12 @@ export default function Canvas({activeTool, penOptions}) {
 			ctx.beginPath();
 			ctx.moveTo(getX(event), getY(event));
 			event.preventDefault();
+			setIsStamping(false);
+		}
+		if(activeTool === 'stamp'){
+			setIsStamping(true);
+			setIsDrawing(false);
+			event.preventDefault();
 		}
 	};
 
@@ -61,11 +68,17 @@ export default function Canvas({activeTool, penOptions}) {
 			ctx.lineJoin = "round";
 			ctx.stroke();
 		}
+		if(isStamping){
+			var img = document.getElementById('img-thumbnail');
+			ctx.drawImage(img, getX(event), getY(event), penOptions.stampWidth, penOptions.stampWidth);
+			setIsStamping(false);
+		}
+
 		event.preventDefault();
 	};
 
 	const end = (event) => {
-		if (isDrawing) {
+		if (isDrawing || isStamping) {
 			ctx.stroke();
 			ctx.closePath();
 			setIsDrawing(false);

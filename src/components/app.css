@@ -45,6 +45,14 @@ body * {
 Tool Panels
 */
 
+.tool-panel h2{
+    font-weight: bold;
+}
+
+.tool-panel section{
+    margin-bottom: 40px;
+}
+
 .tool-panel {
     background: #eff0f3;
     flex-shrink: 0;
@@ -60,11 +68,18 @@ Tool Panels
 }
 
 .active-nav-item{
-    background-color: pink;
+    background-color: #c63570;
 }
 
 .inactive-nav-item{
     background-color: none;
+}
+
+.erase-all{
+    background-color: #c63570;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
 }
 
 

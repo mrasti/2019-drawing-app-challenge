@@ -17,6 +17,7 @@ export default function App() {
 		strokeWidth: 10,
 		lineType: "solid",
 		strokeStyle: "#000000",
+		stampWidth: 200
 	});
 
 	return(

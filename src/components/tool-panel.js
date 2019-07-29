@@ -2,6 +2,7 @@ import React from "react";
 
 import Pen from "./panels/pen";
 import Eraser from "./panels/eraser";
+import Stamp from "./panels/stamp";
 
 export default function ToolPanel({
 	activeTool,
@@ -20,6 +21,12 @@ export default function ToolPanel({
 				<Eraser
 					eraserOptions={penOptions}
 					setEraserOptions={setPenOptions}
+				/>
+			</div>
+			<div className={activeTool==="stamp" ? "active-tool" : "inactive-tool"}>
+				<Stamp
+					stampOptions={penOptions}
+					setStampOptions={setPenOptions}
 				/>
 			</div>
 		</div>

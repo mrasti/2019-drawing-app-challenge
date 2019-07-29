@@ -7,17 +7,15 @@ export default function NavBar({activeTool, setActiveTool}) {
 	return (
 		<div className="nav-bar">
 			<div
-				className="nav-bar__tool"
+				className={activeTool==="pen" ? "nav-bar__tool active-nav-item" : "nav-bar__tool inactive-nav-item"}
 				onClick={e => setActiveTool("pen")}
-				title="Pen"
-			>
+				title="Pen">
 				<PenIcon />
 			</div>
 			<div
-				className="nav-bar__tool"
+				className={activeTool==="eraser" ? "nav-bar__tool active-nav-item" : "nav-bar__tool inactive-nav-item"}
 				onClick={e => setActiveTool("eraser")}
-				title="Eraser"
-			>
+				title="Eraser">
 				<EraserIcon />
 			</div>
 		</div>

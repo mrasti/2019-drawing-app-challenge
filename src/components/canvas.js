@@ -30,7 +30,7 @@ export default function Canvas({activeTool, penOptions}) {
 	};
 
 	const start = (event) => {
-		if (activeTool === "pen") {
+		if (activeTool === "pen" || activeTool==="eraser") {
 			setIsDrawing(true);
 			ctx.beginPath();
 			ctx.moveTo(getX(event), getY(event));
@@ -43,18 +43,19 @@ export default function Canvas({activeTool, penOptions}) {
 			ctx.lineTo(getX(event), getY(event));
 			ctx.lineWidth = penOptions.strokeWidth;
 			var spaceLen=penOptions.strokeWidth;
-			switch(penOptions.lineType){
-				case 'dot':
-					ctx.lineCap = "round";
-					spaceLen = penOptions.strokeWidth*1.5;
-					break;
-				case 'dash':
-					ctx.lineCap = "square";
-					spaceLen = penOptions.strokeWidth*3;
-					break;
-				case 'solid':
-					spaceLen = 0;
-					break;
+
+			ctx.strokeStyle = (activeTool==="pen") ? penOptions.strokeStyle : "white";
+
+			if(penOptions.lineType=='dot'){
+				ctx.lineCap = "round";
+				spaceLen = penOptions.strokeWidth*1.5;
+			}
+			if(penOptions.lineType == 'dash'){
+				ctx.lineCap = "square";
+				spaceLen = penOptions.strokeWidth*3;
+			}
+			if(penOptions.lineType == 'solid' || activeTool==="eraser"){
+				spaceLen = 0;
 			}
 			ctx.setLineDash([penOptions.strokeWidth/5, spaceLen])
 			ctx.lineJoin = "round";

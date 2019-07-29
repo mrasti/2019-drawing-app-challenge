@@ -1,6 +1,7 @@
 import React from "react";
 
 import Pen from "./panels/pen";
+import Eraser from "./panels/eraser";
 
 export default function ToolPanel({
 	activeTool,
@@ -9,10 +10,18 @@ export default function ToolPanel({
 }) {
 	return (
 		<div className="tool-panel">
-			<Pen
-				penOptions={penOptions}
-				setPenOptions={setPenOptions}
-			/>
+			<div className={activeTool==="pen" ? "active-tool" : "inactive-tool"}>
+				<Pen
+					penOptions={penOptions}
+					setPenOptions={setPenOptions}
+				/>
+			</div>
+			<div className={activeTool==="eraser" ? "active-tool" : "inactive-tool"}>
+				<Eraser
+					eraserOptions={penOptions}
+					setEraserOptions={setPenOptions}
+				/>
+			</div>
 		</div>
 	);
 }

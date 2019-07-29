@@ -9,11 +9,18 @@ export default function Pen({penOptions, setPenOptions}) {
 				<label>
 					Stroke Width:
 					<input
+						type="range"
+						min="1" 
+						max="100"
 						value={penOptions.strokeWidth}
 						onChange={e => setPenOptions({...penOptions, strokeWidth: e.target.value})}
 						name="stroke-width"
 					/>
 				</label>
+			</section>
+			<section>
+				Color:
+				<input type="color" value={penOptions.strokeStyle} onChange={e => setPenOptions({...penOptions, strokeStyle: e.target.value})}/>
 			</section>
 			<section>
 				<h2>Line Type:</h2>

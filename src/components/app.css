@@ -51,3 +51,20 @@ Tool Panels
     width: 222px;
 }
 
+.active-tool{
+    display: block;
+}
+
+.inactive-tool{
+    display: none;
+}
+
+.active-nav-item{
+    background-color: pink;
+}
+
+.inactive-nav-item{
+    background-color: none;
+}
+
+
